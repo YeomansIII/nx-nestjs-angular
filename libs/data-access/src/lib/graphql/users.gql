@@ -1,0 +1,55 @@
+query GetUsers($filter: UserFilter, $paging: CursorPaging, $sorting: [UserSort!]) {
+  users(filter: $filter, paging: $paging, sorting: $sorting) {
+    edges {
+      node {
+        id
+        email
+        username
+        firstName
+        lastName
+        isActive
+        createdAt
+        updatedAt
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+  }
+}
+
+query GetUser($id: ID!) {
+  user(id: $id) {
+    id
+    email
+    username
+    firstName
+    lastName
+    isActive
+    createdAt
+    updatedAt
+  }
+}
+
+mutation UpdateUser($id: ID!, $update: UpdateUserInput!) {
+  updateOneUser(id: $id, update: $update) {
+    id
+    email
+    username
+    firstName
+    lastName
+    isActive
+    createdAt
+    updatedAt
+  }
+}
+
+mutation DeleteUser($id: ID!) {
+  deleteOneUser(id: $id) {
+    id
+  }
+}

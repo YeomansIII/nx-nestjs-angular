@@ -1,0 +1,15 @@
+overwrite: true
+schema: 'apps/api-server/src/schema.gql'
+generates:
+  libs/data-access/src/lib/generated/operations.ts:
+    documents: 'libs/data-access/src/lib/graphql/**/*.gql'
+    config:
+      nameSuffix: 'Document'
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-document-nodes'
+  libs/data-access/src/lib/generated/apollo-helpers.ts:
+    documents: 'libs/data-access/src/lib/graphql/**/*.gql'
+    plugins:
+      - 'typescript-apollo-client-helpers'

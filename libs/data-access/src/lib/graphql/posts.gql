@@ -1,0 +1,88 @@
+query GetPosts($filter: PostFilter, $paging: CursorPaging, $sorting: [PostSort!]) {
+  posts(filter: $filter, paging: $paging, sorting: $sorting) {
+    edges {
+      node {
+        id
+        title
+        content
+        excerpt
+        isPublished
+        publishedAt
+        tags
+        authorId
+        createdAt
+        updatedAt
+        author {
+          id
+          username
+          email
+        }
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+  }
+}
+
+query GetPost($id: ID!) {
+  post(id: $id) {
+    id
+    title
+    content
+    excerpt
+    isPublished
+    publishedAt
+    tags
+    authorId
+    createdAt
+    updatedAt
+    author {
+      id
+      username
+      email
+      firstName
+      lastName
+    }
+  }
+}
+
+mutation CreatePost($input: CreatePostInput!) {
+  createOnePost(input: $input) {
+    id
+    title
+    content
+    excerpt
+    isPublished
+    publishedAt
+    tags
+    authorId
+    createdAt
+    updatedAt
+  }
+}
+
+mutation UpdatePost($id: ID!, $update: UpdatePostInput!) {
+  updateOnePost(id: $id, update: $update) {
+    id
+    title
+    content
+    excerpt
+    isPublished
+    publishedAt
+    tags
+    authorId
+    createdAt
+    updatedAt
+  }
+}
+
+mutation DeletePost($id: ID!) {
+  deleteOnePost(id: $id) {
+    id
+  }
+}

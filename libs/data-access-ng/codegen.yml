@@ -1,0 +1,11 @@
+overwrite: true
+schema: 'apps/api-server/src/schema.gql'
+generates:
+  libs/data-access-ng/src/lib/generated/angular.ts:
+    documents: 'libs/data-access/src/lib/graphql/**/*.gql'
+    config:
+      documentMode: external
+      importDocumentNodeExternallyFrom: '@nx-nestjs-angular/data-access'
+      importOperationTypesFrom: Operations
+    plugins:
+      - 'typescript-apollo-angular'
